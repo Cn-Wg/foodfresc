@@ -1,13 +1,15 @@
 <template>
     <div>
-        111
+            111
     </div>
 </template>
+
 <script>
 export default {
     
 }
 </script>
-<style lang="scss">
+
+<style lang="">
     
 </style>

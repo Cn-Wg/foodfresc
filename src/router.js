@@ -1,48 +1,44 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/home/index.vue'
-import Video from './views/video'
-import Dy from './views/Dy'
+import Elect from './views/elect-con'
 import Mine from './views/mine'
-<<<<<<< HEAD
+import Shopcar from './views/shopcar'
 import ListShopcar from './views/list-shopcar'
-=======
+import Index from './views/index'
 import Search from './views/search'
->>>>>>> han
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-      {
-        path:'/',
-        redirect:'home'
-      },
-      {
-        path : '/home',
-        component:Home,
-      },
-      {
-        path:'/classify',
-        component:Video,
-      },
-      {
-        path:'/shopcar',
-        component:Dy,
-      },
-      {
-        path:'/mine',
-        component:Mine,
-      },
-      {
-<<<<<<< HEAD
-        path:'/listshopcar',
-        component:ListShopcar
-=======
-        path:'/search',
-        component:Search,
->>>>>>> han
-      }
+  routes: [{
+      path: '/',
+      redirect: 'home'
+    },
+    {
+      path: '/home',
+      component:Home,
+      redirect:'/home/index',
+      children: [
+        {
+          path: '/home/elect',
+          component: Elect,
+        },
+        {
+          path: '/home/shopcar',
+          component: Shopcar,
+        },
+        {
+          path: '/home/mine',
+          component: Mine,
+        },
+        {
+          path: '/home/index',
+          component: Index
+        }
+      ]
+    },
+
   ]
 })

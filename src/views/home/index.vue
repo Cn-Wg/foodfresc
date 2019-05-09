@@ -1,13 +1,16 @@
 <template>
   <div id="list">
-    11
+    <router-view/>
+    <Footer/>
   </div>
+
 </template>
 
 <script>
+import Footer from '@/common/TabBar'
 export default {
   components:{
-
+    Footer
   }
 };
 </script>

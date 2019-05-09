@@ -80,10 +80,15 @@
         </ul>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 <script>
+import Footer from '@/common/TabBar'
 export default {
+  component:{
+    Footer
+  },
     data(){
         return {
             order : [

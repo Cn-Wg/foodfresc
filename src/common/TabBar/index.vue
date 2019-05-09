@@ -18,22 +18,22 @@ export default {
         {
           iconfont: "fa fa-home",
           text: "首页",
-          to: "/home"
+          to: "/home/index"
         },
         {
           iconfont: "fa fa-th-large",
           text: "分类",
-          to: "/classify"
+          to: "/home/elect"
         },
         {
           iconfont: "fa fa-shopping-cart",
           text: "购物车",
-          to: "/shopcar"
+          to: "/home/shopcar"
         },
         {
           iconfont: "fa fa-user",
           text: "我的",
-          to: "/mine"
+          to: "/home/mine"
         }
       ]
     };
@@ -41,7 +41,7 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 #footer {
   width: 100%;
   height: 0.98rem;
@@ -52,6 +52,7 @@ export default {
   box-shadow: 0 -1px 0.075rem rgba(0, 0, 0, 0.2);
   background-color: #fff;
   margin-top:1rem;
+  z-index: 99999;
 }
 
 #footer > ul {
