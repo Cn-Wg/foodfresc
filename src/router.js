@@ -4,7 +4,11 @@ import Home from './views/home/index.vue'
 import Video from './views/video'
 import Dy from './views/Dy'
 import Mine from './views/mine'
+<<<<<<< HEAD
 import ListShopcar from './views/list-shopcar'
+=======
+import Search from './views/search'
+>>>>>>> han
 Vue.use(Router)
 
 export default new Router({
@@ -32,8 +36,13 @@ export default new Router({
         component:Mine,
       },
       {
+<<<<<<< HEAD
         path:'/listshopcar',
         component:ListShopcar
+=======
+        path:'/search',
+        component:Search,
+>>>>>>> han
       }
   ]
 })
