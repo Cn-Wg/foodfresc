@@ -27,7 +27,7 @@ export default new Router({
         component:Dy,
       },
       {
-        path:'/video',
+        path:'/mine',
         component:Mine,
       },
   ]
