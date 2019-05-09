@@ -4,6 +4,7 @@ import Home from './views/home/index.vue'
 import Video from './views/video'
 import Dy from './views/Dy'
 import Mine from './views/mine'
+import Search from './views/search'
 Vue.use(Router)
 
 export default new Router({
@@ -27,8 +28,12 @@ export default new Router({
         component:Dy,
       },
       {
-        path:'/video',
+        path:'/mine',
         component:Mine,
       },
+      {
+        path:'/search',
+        component:Search,
+      }
   ]
 })
