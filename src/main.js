@@ -3,7 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueJsonp from 'vue-jsonp'
+import 'mint-ui/lib/style.css'
+import MintUI from 'mint-ui'
 Vue.use(VueJsonp);
+Vue.use(MintUI)
 Vue.config.productionTip = false
 
 new Vue({

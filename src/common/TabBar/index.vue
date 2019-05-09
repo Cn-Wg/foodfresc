@@ -21,18 +21,18 @@ export default {
           to: "/home"
         },
         {
-          iconfont: "fa fa-play-circle-o",
-          text: "视频",
-          to: "/video"
+          iconfont: "fa fa-th-large",
+          text: "分类",
+          to: "/classify"
         },
         {
-          iconfont: "fa fa-bookmark",
-          text: "订阅",
-          to: "/dy"
+          iconfont: "fa fa-shopping-cart",
+          text: "购物车",
+          to: "/shopcar"
         },
         {
           iconfont: "fa fa-user",
-          text: "个人",
+          text: "我的",
           to: "/mine"
         }
       ]
@@ -71,7 +71,7 @@ export default {
   color: #ccc;
 }
 #footer > ul > .router-link-active {
-  color: #f39800;
+  color: #49aa34;
 }
 #footer > ul > li > i {
   font-size: 0.4rem;
