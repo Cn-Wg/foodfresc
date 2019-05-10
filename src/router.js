@@ -14,6 +14,7 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+<<<<<<< HEAD
   routes: [{
       path: '/',
       redirect: 'home'
@@ -57,5 +58,28 @@ export default new Router({
       path:'**',
       component:Index 
     }
+=======
+  routes: [
+      {
+        path:'/',
+        redirect:'home'
+      },
+      {
+        path : '/home',
+        component:Home,
+      },
+      {
+        path:'/video',
+        component:Video,
+      },
+      {
+        path:'/dy',
+        component:Dy,
+      },
+      {
+        path:'/mine',
+        component:Mine,
+      },
+>>>>>>> tian
   ]
 })
