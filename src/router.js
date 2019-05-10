@@ -7,6 +7,8 @@ import Shopcar from './views/shopcar'
 import ListShopcar from './views/list-shopcar'
 import Index from './views/index'
 import Search from './views/search'
+import Login from './views/login/index'
+import Register from './views/login/register'
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +41,17 @@ export default new Router({
         }
       ]
     },
-
+    {
+      path:'/login',
+      component:Login
+    },
+    {
+      path:'/register',
+      component:Register 
+    },
+    {
+      path:'**',
+      component:Index 
+    }
   ]
 })

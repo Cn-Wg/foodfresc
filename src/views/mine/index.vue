@@ -1,82 +1,79 @@
 <template>
   <div id="mine">
     <header>
-      <button class="login">请登录</button>
+      <a href="/login" class="login">请登录</a>
     </header>
     <div class="order">
       <ul>
-        <li v-for="(item,index) in order" :key="index">
+        <a href="/login" v-for="(item,index) in order" :key="index">
           <i :class="item.font"></i>
           <span>{{item.name}}</span>
-        </li>
+        </a>
       </ul>
     </div>
     <div class="account">
       <ul>
-        <li>
+        <a href="/login">
           <i class="red">0.00</i>
           <span>余额</span>
-        </li>
-        <li>
+        </a>
+        <a href="/login">
           <i>0.00</i>
           <span>余额</span>
-        </li>
-        <li>
+        </a>
+        <a href="/login">
           <i>0</i>
           <span>积分</span>
-        </li>
-        <li>
+        </a>
+        <a href="/login">
           <i>0</i>
           <span>优惠券</span>
-        </li>
+        </a>
       </ul>
     </div>
     <div class="plug-in">
       <div>
         <ul class="plug-in-con">
-          <li>
+          <a href="/login">
             <i style="color:rgb(240, 84, 35);" class="fa fa-jpy"></i>
             <span>充值</span>
-          </li>
-          <li>
+          </a>
+          <a href="/login">
             <i style="color:#9ce2f3" class="fa fa-fort-awesome"></i>
             <span>地址管理</span>
-          </li>
-          <li>
+          </a>
+          <a href="/login">
             <i style="color:#fa5d5d" class="fa fa-heart-o"></i>
             <span>收藏</span>
-          </li>
-          <li>
+          </a>
+          <a href="/login">
             <i style="color:#ba917a" class="fa fa-history"></i>
             <span>浏览记录</span>
-          </li>
-          
+          </a>
         </ul>
         <ul class="plug-in-con">
-          <li>
+          <a href="/login">
             <i style="color:#9eda00" class="fa fa-cc-visa"></i>
-            <span>食行卡
-            </span>
-          </li>
-          <li>
+            <span>食行卡</span>
+          </a>
+          <a href="/login">
             <i style="color:#5cb1fc" class="fa fa-comments"></i>
             <span>客户服务</span>
-          </li>
-          <li>
+          </a>
+          <a href="/login">
             <i style="color:#fcdb13" class="fa fa-question-circle-o"></i>
             <span>帮助中心</span>
-          </li>
-          <li>
+          </a>
+          <a href="/login">
             <i style="color:#f0f9df" class="fa fa-handshake-o"></i>
             <span>商务合作</span>
-          </li>
-          
+          </a>
         </ul>
         <ul class="plug-in-con">
-          <li>
-            <i style="color:#2cd4ac"  class="fa fa-credit-card"></i>
+          <a href="/login">
+            <i style="color:#2cd4ac" class="fa fa-credit-card"></i>
             <span>食行粮票</span>
-          </li>
+          </a>
         </ul>
       </div>
     </div>
@@ -84,75 +81,75 @@
   </div>
 </template>
 <script>
-import Footer from '@/common/TabBar'
+import Footer from "@/common/TabBar";
 export default {
-  component:{
+  component: {
     Footer
   },
-    data(){
-        return {
-            order : [
-                {
-                    name : "全部订单",
-                    font : "fa fa-reorder"
-                },
-                 {
-                    name : "待配送",
-                    font : "fa fa-truck"
-                },
-                 {
-                    name : "待自提",
-                    font : "fa fa-arrow-circle-down"
-                },
-                 {
-                    name : "待评价",
-                    font : "fa fa-commenting-o"
-                },
-                 {
-                    name : "轻松退",
-                    font : "fa fa-times-rectangle-o"
-                }
-            ],
-            plugIn : [
-                {
-                    name : "充值",
-                    font : "fa fa-jpy"
-                },
-                 {
-                    name : "地址管理",
-                    font : "fa fa-fort-awesome"
-                },
-                 {
-                    name : "收藏",
-                    font : "fa fa-heart-o"
-                },
-                 {
-                    name : "浏览记录",
-                    font : "fa fa-history"
-                },
-                 {
-                    name : "食行卡",
-                    font : "fa fa-cc-visa"
-                },
-                 {
-                    name : "客服服务",
-                    font : "fa fa-comments"
-                },
-                 {
-                    name : "帮助中心",
-                    font : "fa fa-question-circle-o"
-                },
-                 {
-                    name : "商务合作",
-                    font : "fa fa-handshake-o"
-                },
-                 {
-                    name : "食行粮票",
-                    font : "fa fa-credit-card"
-                },
-            ]
+  data() {
+    return {
+      order: [
+        {
+          name: "全部订单",
+          font: "fa fa-reorder"
+        },
+        {
+          name: "待配送",
+          font: "fa fa-truck"
+        },
+        {
+          name: "待自提",
+          font: "fa fa-arrow-circle-down"
+        },
+        {
+          name: "待评价",
+          font: "fa fa-commenting-o"
+        },
+        {
+          name: "轻松退",
+          font: "fa fa-times-rectangle-o"
         }
-    }
+      ],
+      plugIn: [
+        {
+          name: "充值",
+          font: "fa fa-jpy"
+        },
+        {
+          name: "地址管理",
+          font: "fa fa-fort-awesome"
+        },
+        {
+          name: "收藏",
+          font: "fa fa-heart-o"
+        },
+        {
+          name: "浏览记录",
+          font: "fa fa-history"
+        },
+        {
+          name: "食行卡",
+          font: "fa fa-cc-visa"
+        },
+        {
+          name: "客服服务",
+          font: "fa fa-comments"
+        },
+        {
+          name: "帮助中心",
+          font: "fa fa-question-circle-o"
+        },
+        {
+          name: "商务合作",
+          font: "fa fa-handshake-o"
+        },
+        {
+          name: "食行粮票",
+          font: "fa fa-credit-card"
+        }
+      ]
+    };
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -194,19 +191,19 @@ header > .login {
   height: 100%;
   display: flex;
   justify-content: space-between;
-  color: #f2f2f2;
 }
-.order > ul > li {
+.order > ul > a {
   height: 49 / $t + rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-.order > ul > li > i {
+.order > ul > a > i {
   font-size: 0.48rem;
+  color: #c3c3c3;
 }
-.order > ul > li > span {
+.order > ul > a > span {
   font-size: 0.28rem;
   color: #333;
 }
@@ -222,18 +219,19 @@ header > .login {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  color: #333 !important;
 }
-.account > ul > li {
+.account > ul > a {
   width: 1rem;
   height: 49 / $t + rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  color: #333 !important;
 }
-.account > ul > li > span {
+.account > ul > a > span {
   font-size: 0.28rem;
-  color: #333;
 }
 .plug-in {
   width: 100%;
@@ -248,18 +246,19 @@ header > .login {
   align-items: center;
   border-bottom: 2px solid #ddd;
 }
-.plug-in-con > li {
+.plug-in-con > a {
   width: 93.75 / $t + rem;
   height: 49 / $t + rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  color: #333 !important;
 }
-.plug-in-con > li > i{
-      font-size: 0.48rem;
+.plug-in-con > a > i {
+  font-size: 0.48rem;
 }
-.red{
-    color:red;
+.red {
+  color: red;
 }
 </style>
