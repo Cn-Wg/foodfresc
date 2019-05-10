@@ -1,24 +1,25 @@
 export default {
   state: {
          todo:[
-             {
-             id:1,
-             title:'http://picpro-sz.34580.com/sz/ImageUrl/147886/120.jpeg',
-             complete:true,
-             name:"【两杯装】八喜香草口味冰淇淋283g/杯【两杯装】八喜香草口味冰淇淋283g",
-             pee:"283g*2杯/组",
-             price:"45.0",
-             sum:1
-            },
-            {
-                id:2,
-                title:'http://picpro-sz.34580.com/sz/ImageUrl/147886/120.jpeg',
-                complete:true,
-                name:"【两杯装】八喜香草口味冰淇淋283g/杯【两杯装】八喜香草口味冰淇淋283g",
-                pee:"283g*2杯/组",
-                price:"45.0",
-                sum:1
-            },
+            
+                {
+                 id:1,
+                 title:'http://picpro-sz.34580.com/sz/ImageUrl/147886/120.jpeg',
+                 complete:true,
+                 name:"【两杯装】八喜香草口味冰淇淋283g/杯【两杯装】八喜香草口味冰淇淋283g",
+                 pee:"283g*2杯/组",
+                 price:"45.0",
+                 sum:1
+                },
+                {
+                    id:2,
+                    title:'http://picpro-sz.34580.com/sz/ImageUrl/147886/120.jpeg',
+                    complete:true,
+                    name:"【两杯装】八喜香草口味冰淇淋283g/杯【两杯装】八喜香草口味冰淇淋283g",
+                    pee:"283g*2杯/组",
+                    price:"45.0",
+                    sum:1
+                },
          ]
   },
   getters:{  //显示总的钱 显示总的数量
@@ -64,6 +65,9 @@ mutations: {
     },
     remove(state,id){
            state.todo = state.todo.filter((item)=>item.id!==id)
+    },
+    completeCount(){
+       return this.todo.filter((item)=>item.complete).length
     },
     change(state,obj){
            state.todo.forEach((item)=>{

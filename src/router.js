@@ -36,7 +36,7 @@ export default new Router({
         {
           path: '/home/index',
           component: Index
-        }
+        },
       ]
     },
 

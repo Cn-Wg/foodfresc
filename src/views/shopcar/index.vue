@@ -13,8 +13,7 @@
           </div>
 
 
-      <div class="azz" v-for="item in Goods.todo">
-          <div>
+  <div class="azz" v-for="item in Goods.todo">
           <div class="w">
               <div class="q">
                <input type="checkbox" v-model="item.complete">
@@ -32,7 +31,6 @@
                   
           </div>  
            <p>特价商品 库存有限 请尽快下单</p>
-    </div>
 
     <div class="ren">
         <div class="xxa">
@@ -54,6 +52,7 @@
        <div class="az"><div>去结算</div><p>({{sum}})</p></div>
     </div>
 </div>
+
     <Footer/>
 </div>              
 
