@@ -115,14 +115,15 @@
                     {{item.name}}
               </div>
               <div class="price">
+                <div class="jg">
                     {{item.price}}
-              </div>
-              <div class="shopcar">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-              </div>
-              
-                
-          </li>
+                </div>
+                <div class="shopcar">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </div>
+              </div>    
+      </li>
+
       </div>
   </div>
   </div>
@@ -280,7 +281,7 @@ export default {
     height: 100%;
     flex: 1;
     overflow: auto;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     .swiper{
           width: 100%;
           height: 3.21rem;
@@ -523,11 +524,11 @@ export default {
       
     .list{
         width: 100%;
-        height: 18rem;
+        height: 15.5rem;
         background: #fff;
         li{
             width: 50%;
-            height: 6rem;
+            height: 5rem;
             display: flex;
             flex-direction: column;
             float: left;
@@ -540,27 +541,45 @@ export default {
                 }
             }
             .name{
-                width: 100%;
+                width: 3.7rem;
                 height: .58rem;
+                line-height: .58rem;
+                font-size: .3rem;
+                color: #333;
+                font-weight: 700;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+                padding-left: .2rem;  
             }
             .price{
                 width: 100%;
                 height: .4rem;
-            }
-            .shopcar{
-                width: 100%;
-                height: .88rem;
+                padding-left: .2rem;
+                font-size: .3rem;
                 color: red;
-                display: flex;
-                justify-content: flex-end;
-                font-size: .4rem;
-                i{  
-                    width: .5rem;
-                    height: .5rem;
-                    border: 1px solid red;
-                    border-radius: 50%;
+                .jg{
+                  width: 60%;
+                  float: left;
+                  line-height: .66rem;
                 }
+                .shopcar{
+                    width: .88rem;
+                    height: .88rem;
+                    float: right;
+                    color: red;
+                    font-size: .4rem;
+                    padding-right: .2rem;
+                        i{  
+                            width: .5rem;
+                            height: .5rem;
+                            border: 1px solid red;
+                            border-radius: 50%;
+                        }
+                    }
+
             }
+           
         }
     }
   }
