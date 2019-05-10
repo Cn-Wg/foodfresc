@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fenlei">
     <div class="header">
       <div>
         <router-link to="/search">
@@ -11,7 +11,8 @@
     </div>
     <div class="contents">
       <ul class="left">
-        <li v-for="n in 16" :key="n" :class="{'list':bool===n}" @click="borderLeft(n)">推选分类</li>
+        <li :class="{'list':bools}" @click="first">推选分类</li>
+        <li v-for="item in list" :key="item.PictureId" :class="{'list':bool===item.PictureId}" @click="borderLeft(item)">{{item.Name}}</li>
       </ul>
       <div class="right">
         <component :is="t"></component>
@@ -21,34 +22,49 @@
     <Footer/>
   </div>
 </template>
-<script>
+<script> 
 import Footer from "@/common/TabBar";
-import One from "../elect";
+ import One from "../elect_1";
+ import Twene from "../elect_2";
+ import {mapState}  from 'vuex'
 export default {
   components: {
     Footer
   },
+  computed:{
+  
+  },
   data() {
     return {
       list: [],
-      bool: 0,
-      t: One
+      bool: "",
+      bools:true,
+      t: Twene
     };
   },
+  
   created() {
-    console.log("aa");
-    this.$jsonp("https://api1.34580.com/sz/Products/HotCategoryRequest").then(
-      res => {
-        console.log(res);
-      }
-    );
+    fetch("https://api1.34580.com/sz/Products/BigCategoryRequest").then((res)=>
+        {
+          return res.json()
+        }).then((res)=>{
+        this.list=res.Data
+        })
+  
   },
 
+
   methods: {
-    borderLeft(n) {
-      this.bool = n;
+    borderLeft( item) {
+      this.bool = item.PictureId;
+      this.bools=false;
+    },
+    first(){
+      this.bools=true;
+      this.bool=0
     }
   },
+
   components: {
     One
   }
@@ -56,6 +72,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 $t: 50;
+.fenlei{
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
 .header {
   height: 0.96rem;
   width: 100%;
@@ -77,7 +98,6 @@ $t: 50;
 }
 .contents {
   display: flex;
-}
 .left {
   width: 90 / $t + rem;
   height: 618.33 / $t + rem;
@@ -94,17 +114,14 @@ $t: 50;
     font-size: 32px;
   }
 }
-
+}
 .list {
   background: white !important;
   border-left: 0.05rem solid #45ac2a;
 }
 .right {
   flex: 1;
-  // height: 618.33/$t + rem;
-  background: pink;
-  height: 1273 / $t + rem;
-  display: flex;
-  justify-content: center;
+  
 }
+//https://api1.34580.com/sz/Products/SubCategoryRequest
 </style>
