@@ -10,25 +10,19 @@
     </header>
 
     <mt-swipe class="banner" :auto="0">
-      <mt-swipe-item>
-        <img src="http://picpro-sz.34580.com/sz/ImageUrl/547058/800.jpeg" alt>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <img src="http://picpro-sz.34580.com/sz/ImageUrl/546822/800.jpeg" alt>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <img src="http://picpro-sz.34580.com/sz/ImageUrl/546821/800.jpeg" alt>
+      <mt-swipe-item class="banner-con" v-for="(item,index) in goods.banners" :key="index">
+        <img :src="item | toPath()" alt>
       </mt-swipe-item>
     </mt-swipe>
 
     <div class="show">
-      <h1>埃及橙</h1>
+      <h1>{{goods.productName}}</h1>
       <h2>
-        <span>￥6.90</span>
+        <span>￥{{goods.periodMoney}}</span>
         <i>/500g</i>
       </h2>
       <h3>
-        <span>￥ 9.90/500g</span>
+        <span>￥ {{goods.defaultMoney}}/500g</span>
         <i>已售115785</i>
       </h3>
       <h4>
@@ -37,7 +31,7 @@
             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8ZyBpZD0i5ZWG5ZOB6K+m5oOFIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8ZyBpZD0iMS1tYXgt5rS75p2A6bG8LeeJueS7tyIgc3Ryb2tlPSIjNDlBQTM0IiBzdHJva2Utd2lkdGg9IjEuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE1IC01MTEpIj4KICAgICAgPGcgaWQ9Iuavj+S7veS7t+agvC1jb3B5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQ5NykiPgogICAgICAgIDxnIGlkPSLmgLvku7ciIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2IDEyKSI+CiAgICAgICAgICA8ZyBpZD0iZGV0YWlsc19pY29uX1dlaWdoaW5nX2Rpc2FibGVkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDMpIj4KICAgICAgICAgICAgPHBhdGggaWQ9IlN0cm9rZS0xIiBkPSJNMTQsLTMuNTUyNzEzNjhlLTE1IEMxNCwtMy41NTI3MTM2OGUtMTUgMTIuOTc2OTIzMSwxLjczOTc2OTIzIDEyLjM4NDYxNTQsMS43Mzk3NjkyMyBMMS42MTUzODQ2MiwxLjczOTc2OTIzIEMxLjAyMzA3NjkyLDEuNzM5NzY5MjMgMCwtMy41NTI3MTM2OGUtMTUgMCwtMy41NTI3MTM2OGUtMTUiLz4KICAgICAgICAgICAgPHBhdGggaWQ9IlN0cm9rZS0zIiBkPSJNMi4yMjQ0MzQ2Miw3LjIyNDQzNDYyIEMyLjIyNDQzNDYyLDQuNTg3MzY3NDEgNC4zNjI0NTUyNCwyLjQ0ODg2OTIzIDcsMi40NDg4NjkyMyBDOS42MzcwNjcyMSwyLjQ0ODg2OTIzIDExLjc3NTU2NTQsNC41ODczNjc0MSAxMS43NzU1NjU0LDcuMjI0NDM0NjIgQzExLjc3NTU2NTQsOS44NjE5NzkzOCA5LjYzNzA2NzIxLDEyIDcsMTIgQzQuMzYyNDU1MjQsMTIgMi4yMjQ0MzQ2Miw5Ljg2MTk3OTM4IDIuMjI0NDM0NjIsNy4yMjQ0MzQ2MiBaIi8+CiAgICAgICAgICAgIDxwYXRoIGlkPSJTdHJva2UtNSIgZD0iTTUuNzQ3OTY5MjMsNy44MzM0ODQ2MiBDNS43NDc5NjkyMyw3LjE0MjEgNi45OTk4OTIzMSw1LjY0MzU2MTU0IDYuOTk5ODkyMzEsNS42NDM1NjE1NCBDNi45OTk4OTIzMSw1LjY0MzU2MTU0IDguMjUxODE1MzgsNy4xNDIxIDguMjUxODE1MzgsNy44MzM0ODQ2MiBDOC4yNTE4MTUzOCw4LjUyNDg2OTIzIDcuNjkxMjc2OTIsOS4wODU0MDc2OSA2Ljk5OTg5MjMxLDkuMDg1NDA3NjkgQzYuMzA4NTA3NjksOS4wODU0MDc2OSA1Ljc0Nzk2OTIzLDguNTI0ODY5MjMgNS43NDc5NjkyMyw3LjgzMzQ4NDYyIFoiLz4KICAgICAgICAgICAgPHBvbHlsaW5lIGlkPSJTdHJva2UtNyIgcG9pbnRzPSIxMS44MjkgMTAuNDggMTMuNSAxMy45MjIgLjUgMTMuOTIyIDIuMTcyIDEwLjQ4Ii8+CiAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K"
             alt
           > 每份约
-          <span>￥13.80</span>
+          <span>￥{{goods.unitPeriodMoney}}</span>
           <i>称重</i>
         </div>
         <p class="fa fa-chevron-right"></p>
@@ -93,10 +87,9 @@
         </div>
       </div>
       <div class="right">
-        <img src="http://pic2.34580.cn/group1/M00/98/36/wKgNYlzUlxOAcDt8AAF0quQPaN872.jpeg" alt>
+        <img :src="goods.banners[0] | toPath()" alt>
       </div>
     </div>
-
     <div class="like">
       <span>———&nbsp;&nbsp;您可能会喜欢&nbsp;&nbsp;———</span>
     </div>
@@ -104,11 +97,11 @@
     <div class="list">
       <li v-for="(item,index) in ltime" :key="index">
         <div class="pic">
-          <img :src="item.pic" alt>
+          <img :src="item.PictureId | toPath()" alt>
         </div>
-        <div class="name">{{item.name}}</div>
+        <div class="name">{{item.ProductName}}</div>
         <div class="price">
-          <div class="jg">{{item.price}}</div>
+          <div class="jg">{{item.UnitPeriodMoney}}</div>
           <div class="shopcar">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           </div>
@@ -143,53 +136,38 @@ import { Swipe, SwipeItem } from "mint-ui";
 export default {
   data() {
     return {
+      goods:[],
       indexcur: 0,
       list: ["商品", "详情", "评价"],
-      ltime: [
-        {
-          pic: "http://picpro-sz.34580.com/sz/ImageUrl/551700/160.jpeg",
-          name: "莴笋",
-          activity: "",
-          price: "￥2.5/500g"
-        },
-        {
-          pic: "http://picpro-sz.34580.com/sz/ImageUrl/553492/160.jpeg",
-          name: "紫燕百味鸡百味鸡380g/盒",
-          activity: "买1赠1",
-          price: "¥49.90/袋"
-        },
-        {
-          pic: "http://picpro-sz.34580.com/sz/ImageUrl/553411/160.jpeg",
-          name: "妃子笑荔枝A级",
-          activity: "",
-          price: "￥19.9/500g"
-        },
-        {
-          pic: "http://picpro-sz.34580.com/sz/ImageUrl/547505/160.jpeg",
-          name: "陕西洛川红富士75-80mm大包装",
-          activity: "",
-          price: "¥7.99/500g"
-        },
-        {
-          pic: "http://picpro-sz.34580.com/sz/ImageUrl/548032/160.jpeg",
-          name: "本地豌豆",
-          activity: "",
-          price: "¥3.99/500g"
-        },
-        {
-          pic: "http://picpro-sz.34580.com/sz/ImageUrl/132754/160.jpeg",
-          name: "徐溪黑猪五花肉",
-          activity: "",
-          price: "￥24.90/500g"
-        }
-      ]
+      ltime: []
     };
   },
   methods: {
     Tab(index) {
       this.indexcur = index;
+    },
+     getData(id) {
+      fetch("https://api1.34580.com/sz/product/detail?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9&ssuId=" + id)
+        .then(res => {
+          return res.json();
+        })
+        .then(res => {
+          this.goods = res.result.productInfo
+          console.log(this.goods)
+        });
     }
-  }
+  },
+  created() {
+    var id = this.$route.params.type;
+    this.getData(id);
+    fetch("https://api1.34580.com/sz/Recommends/ProductRecommendRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9&json=%7B%22PageSize%22:10,%22PageIndex%22:1,%22RecommendType%22:0%7D")
+        .then(res => {
+          return res.json();
+        })
+        .then(res => {
+          this.ltime = res.Data
+        });
+  },
 };
 </script>
 
@@ -197,7 +175,7 @@ export default {
 #list-shopcar {
   flex: 1;
   overflow: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 }
 header {
   width: 100%;
@@ -222,13 +200,19 @@ header > .active {
   color: #49aa34;
 }
 .banner {
-  width: 100%;
+  width: 7.5rem;
   height: 7.5rem;
+  margin-top: .8rem;
+  .banner-con{
+     width: 7.5rem;
+     height: 7.5rem;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+  }
 }
-.banner > img {
-  width: 100%;
-  height: 7.5rem;
-}
+
 .show {
   width: 100%;
   height: 3.04rem;

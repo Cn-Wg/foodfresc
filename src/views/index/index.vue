@@ -41,7 +41,7 @@
 
       <div class="area">
           <ul>
-              <a herf="/list" v-for="(item,index) in area" :key="index">
+              <a href="https://wechatx.34580.com/topics/d4c6698e2b17df5bd76209b2fde34893" v-for="(item,index) in area" :key="index">
                   <div class="pic">
                       <img :src="item.URL" alt="">
                   </div>
@@ -73,7 +73,7 @@
               </div>
           </div>
           <div class="bottom">
-              <a v-for="(item,index) in ltime" :key="index">
+              <router-link tag="a" :to="'/listshopcar/'+item.ProductId" v-for="(item,index) in ltime" :key="index">
                   <div class="pic">
                       <img :src="item.PictureId | toPath()" alt="">
                   </div>
@@ -86,7 +86,7 @@
                   <div class="price">
                       {{item.PvStandard}}
                   </div>
-              </a>
+              </router-link>
           </div>
       </div>
 
@@ -106,8 +106,7 @@
       </div>
 
       <div class="list">
-          <a href="/list" v-for="(item,index) in like" :key="index">
-                
+          <router-Link tag="a" :to="'/listshopcar/'+item.ProductId" v-for="(item,index) in like" :key="index">
               <div class="pic">
                   <img :src="item.PictureId | toPath() " alt="">
               </div>
@@ -122,7 +121,7 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </div>
               </div>    
-      </a>
+      </router-Link>
 
       </div>
   </div>
@@ -172,6 +171,7 @@ export default {
       return res.json()
     }).then((res)=>{
       this.like= res.Data.SourceData
+      console.log(this.like)
     })
 
     //discount

@@ -10,6 +10,7 @@ import Search from './views/search'
 import Login from './views/login/index'
 import Register from './views/login/register'
 import List from './views/list'
+
 Vue.use(Router)
 
 export default new Router({
@@ -55,11 +56,11 @@ export default new Router({
       component: Search
     },
     {
-      path: '/listshopcar',
+      path: '/listshopcar/:type?',
       component: ListShopcar
     },
     {
-      path:'/list',
+      path:'/list/:type?',
       component:List
     },
     {
