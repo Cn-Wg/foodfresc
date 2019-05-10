@@ -13,19 +13,20 @@
           </div>
 
 
-      <div class="azz">
+      <div class="azz" v-for="item in Goods.todo">
+          <div>
           <div class="w">
               <div class="q">
-               <input type="checkbox">
-               <img src="http://picpro-sz.34580.com/sz/ImageUrl/147886/120.jpeg" alt="">
+               <input type="checkbox" v-model="item.complete">
+               <img :src="item.title" alt="">
               </div>
 
                <div class="l">
-                   <h2>【两杯装】八喜香草口味冰淇淋283g/杯【两杯装】八喜香草口味冰淇淋283g</h2>
-                   <h3>283g*2杯/组</h3>
+                   <h2>{{item.name}}</h2>
+                   <h3>{{item.pee}}</h3>
                    <ul>
-                      <span>￥</span><p>45.90</p>
-                     <div class="des"><p>-</p><span>1</span><p>+</p></div>
+                      <span>￥</span><p>{{item.price}}</p>
+                     <div class="des"><p @click="change({id:item.id,flag:false})">-</p>{{item.sum}}<p @click="change({id:item.id,flag:true})">+</p></div>
                    </ul>
                </div>
                   
@@ -35,14 +36,14 @@
 
     <div class="ren">
         <div class="xxa">
-            <input type="checkbox">
+            <input type="checkbox" />
              <span>全选</span>       
         </div>
 
      <div class="ql">
         <div class="ssq">
             <h2>合计</h2>
-            <span>￥</span><p>45.90</p>
+            <span>￥</span><p>{{money}}</p>
         </div>
          <div class="aas">
             <h2>已省</h2>
@@ -50,15 +51,25 @@
         </div>
      </div>
 
-       <div class="az"><div>去结算</div><p>(1)</p></div>
+       <div class="az"><div>去结算</div><p>({{sum}})</p></div>
     </div>
+</div>
     <Footer/>
 </div>              
 
 </template>
 <script>
+import {mapState,mapMutations,mapGetters} from 'vuex'
 import Footer from '@/common/TabBar'
 export default {
+    computed: {
+         ...mapState(["Goods","todo"]),
+         ...mapGetters(["money","sum"])
+       
+    },
+   	methods:{
+	...mapMutations(["change","set","get"])
+	},
     component:{
         Footer
     }
