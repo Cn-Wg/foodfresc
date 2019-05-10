@@ -40,10 +40,13 @@ export default new Router({
           path: '/home/index',
           component: Index
         },
+<<<<<<< HEAD
         {
           path: '/home/list',
           component: ListShopcar
         }
+=======
+>>>>>>> items
       ]
     },
     {
