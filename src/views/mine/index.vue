@@ -39,7 +39,7 @@
             <span>充值</span>
           </a>
           <a href="/login">
-            <i style="color:#9ce2f3" class="fa fa-fort-awesome"></i>
+            <i style="color:#9ce2f3" class="fa fa-location-arrow"></i>
             <span>地址管理</span>
           </a>
           <a href="/login">

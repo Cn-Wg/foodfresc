@@ -6,12 +6,12 @@
               <i class="fa fa-angle-down" aria-hidden="true"></i>
           </div>
           <div class="right">
-              <div class="search">
+              <a href="/search" class="search">
                   <div class="tb">
                       <i class="fa fa-search" aria-hidden="true"></i>
                       <span>{{txt}}</span>
                   </div>
-              </div>
+              </a>
           </div>
       </div>
 
@@ -41,14 +41,14 @@
 
       <div class="area">
           <ul>
-              <li v-for="(item,index) in area" :key="index">
+              <a herf="/list" v-for="(item,index) in area" :key="index">
                   <div class="pic">
-                      <img :src="item.tb" alt="">
+                      <img :src="item.URL" alt="">
                   </div>
                   <div class="name">
-                      <span>{{item.name}}</span>
+                      <span>{{item.Name}}</span>
                   </div>
-              </li>
+              </a>
           </ul>
       </div>
 
@@ -73,20 +73,20 @@
               </div>
           </div>
           <div class="bottom">
-              <li v-for="(item,index) in ltime" :key="index">
+              <a v-for="(item,index) in ltime" :key="index">
                   <div class="pic">
-                      <img :src="item.pic" alt="">
+                      <img :src="item.PictureId | toPath()" alt="">
                   </div>
                   <div class="name">
-                      {{item.name}}
+                      {{item.ProductName}}
                   </div>
                   <!-- <div class="activity">
                       {{item.activity}}
                   </div> -->
                   <div class="price">
-                      {{item.price}}
+                      {{item.PvStandard}}
                   </div>
-              </li>
+              </a>
           </div>
       </div>
 
@@ -106,23 +106,23 @@
       </div>
 
       <div class="list">
-          <li v-for="(item,index) in ltime" :key="index">
+          <a href="/list" v-for="(item,index) in like" :key="index">
                 
               <div class="pic">
-                  <img :src="item.pic" alt="">
+                  <img :src="item.PictureId | toPath() " alt="">
               </div>
               <div class="name">
-                    {{item.name}}
+                    {{item.ProductName}}
               </div>
               <div class="price">
                 <div class="jg">
-                    {{item.price}}
+                    {{item.UnitPeriodMoney}}
                 </div>
                 <div class="shopcar">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </div>
               </div>    
-      </li>
+      </a>
 
       </div>
   </div>
@@ -153,87 +153,34 @@ export default {
             wz:"包退包赔"
           }
       ],
-      area:[
-          {
-            tb:"http://pic2.34580.cn/group1/M00/8B/CD/wKgNYly5lJSAGAAjAAAkeApZbvo147.png",
-            name:"0.99买菜"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/A0/7F/wKgNY1y5JPyAJZBmAAAkIxY-trc451.png",
-            name:"新鲜水果"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/8B/CD/wKgNYly5lC6AVPAIAAAfl5GrCPc286.png",
-            name:"鱼虾肉蛋"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/A0/7F/wKgNY1y5JGeAdE2rAAAgSRv-1vE964.png",
-            name:"乳品烘焙"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/A0/7F/wKgNY1y5JNyAQ8mhAAAfxmDnUjI518.png",
-            name:"生活超市"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/A5/0B/wKgNY1zCXv2AXk_wAAAVNHww3W8982.png",
-            name:"团购"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/A0/7E/wKgNY1y5Iz-AbOSGAAAJjtfcWD8463.png",
-            name:"每日领券"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/AC/87/wKgNY1zTip2AQOR5AAAVGiHiPJE352.png",
-            name:"折扣专区"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/8B/CB/wKgNYly5koiAaRm5AAAMAxMu_m4749.png",
-            name:"明天吃什么"
-          },
-          {
-            tb:"http://pic2.34580.cn/group1/M00/AC/87/wKgNY1zTio6AWou5AAAUKPPwiCY844.png",
-            name:"精品馆"
-          }
-      ],
-      ltime:[
-          {
-            pic:"http://picpro-sz.34580.com/sz/ImageUrl/551700/160.jpeg",
-            name:"莴笋",
-            activity:"",
-            price:"￥2.5/500g"
-          },
-          {
-            pic:"http://picpro-sz.34580.com/sz/ImageUrl/553492/160.jpeg",
-            name:"紫燕百味鸡百味鸡380g/盒",
-            activity:"买1赠1",
-            price:"¥49.90/袋"
-          },
-          {
-            pic:"http://picpro-sz.34580.com/sz/ImageUrl/553411/160.jpeg",
-            name:"妃子笑荔枝A级",
-            activity:"",
-            price:"￥19.9/500g"
-          },
-          {
-            pic:"http://picpro-sz.34580.com/sz/ImageUrl/547505/160.jpeg",
-            name:"陕西洛川红富士75-80mm大包装",
-            activity:"",
-            price:"¥7.99/500g"
-          },
-          {
-            pic:"http://picpro-sz.34580.com/sz/ImageUrl/548032/160.jpeg",
-            name:"本地豌豆",
-            activity:"",
-            price:"¥3.99/500g"
-          },{
-            pic:"http://picpro-sz.34580.com/sz/ImageUrl/132754/160.jpeg",
-            name:"徐溪黑猪五花肉",
-            activity:"",
-            price:"￥24.90/500g"
-          }
-      ]
+      area:[],
+      ltime:[],
+      like:[]
     }
-  }
+  },
+  created() {
+
+    //限时抢购
+    fetch("https://api1.34580.com/sz/Home/FlashSaleRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9").then((res)=>{
+      return res.json()
+    }).then((res)=>{
+      this.ltime= res.Data.FlashSaleProducts
+    })
+
+    //猜你喜欢
+     fetch("https://api1.34580.com/sz/ProductRequests/ProductMultiConditionRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9&json=%7B%22CategoryIds%22:[101155],%22PageIndex%22:1,%22PageSize%22:20,%22OrderDirectionType%22:0,%22OrderFieldType%22:0,%22sourcetype%22:%229%22%7D").then((res)=>{
+      return res.json()
+    }).then((res)=>{
+      this.like= res.Data.SourceData
+    })
+
+    //discount
+     fetch("https://api1.34580.com/sz/Home/ShortcutIconRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9").then((res)=>{
+      return res.json()
+    }).then((res)=>{
+      this.area= res.Data.ShortcutIcons.splice(0,10)
+    })
+  },
 };
 </script>
 
@@ -351,7 +298,7 @@ export default {
             justify-content: space-around;
             align-content: space-around;
             flex-wrap: wrap;
-            li{
+            a{
                 width: 1.4rem;
                 height: 1.48rem;
                 padding-left: .16rem;
@@ -416,12 +363,13 @@ export default {
             }
         }
         .bottom{
-           width: 6.9rem;
+           width: 7rem;
            height: 3.54rem;
            display: flex;
            flex: 1;
            overflow: auto;
-           li{
+           margin-left:0.25rem;
+           a{
              width: 2.2rem;
              height: 3.54rem;
              margin: 0 .2rem;
@@ -524,14 +472,15 @@ export default {
       
     .list{
         width: 100%;
-        height: 15.5rem;
+        height: 20rem;
         background: #fff;
-        li{
+        a{
             width: 50%;
             height: 5rem;
             display: flex;
             flex-direction: column;
             float: left;
+            background:#fff;
             .pic{
                 width: 3.5rem;
                 height: 3.5rem;

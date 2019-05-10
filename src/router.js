@@ -9,12 +9,12 @@ import Index from './views/index'
 import Search from './views/search'
 import Login from './views/login/index'
 import Register from './views/login/register'
+import List from './views/list'
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-<<<<<<< HEAD
   routes: [{
       path: '/',
       redirect: 'home'
@@ -38,15 +38,8 @@ export default new Router({
         },
         {
           path: '/home/index',
-          component: Index
+          component: Index,
         },
-<<<<<<< HEAD
-        {
-          path: '/home/list',
-          component: ListShopcar
-        }
-=======
->>>>>>> items
       ]
     },
     {
@@ -58,31 +51,20 @@ export default new Router({
       component:Register 
     },
     {
+      path: '/search',
+      component: Search
+    },
+    {
+      path: '/listshopcar',
+      component: ListShopcar
+    },
+    {
+      path:'/list',
+      component:List
+    },
+    {
       path:'**',
       component:Index 
-    }
-=======
-  routes: [
-      {
-        path:'/',
-        redirect:'home'
-      },
-      {
-        path : '/home',
-        component:Home,
-      },
-      {
-        path:'/video',
-        component:Video,
-      },
-      {
-        path:'/dy',
-        component:Dy,
-      },
-      {
-        path:'/mine',
-        component:Mine,
-      },
->>>>>>> tian
-  ]
+    },
+   ]
 })
