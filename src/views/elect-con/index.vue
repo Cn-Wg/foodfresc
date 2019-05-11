@@ -11,68 +11,57 @@
     </div>
     <div class="contents">
       <ul class="left">
-        <li :class="{'list':bools}" @click="first">推选分类</li>
-        <li v-for="item in list" :key="item.PictureId" :class="{'list':bool===item.PictureId}" @click="borderLeft(item)">{{item.Name}}</li>
+        <li :class="{'list':elect.bools}" @click="first">推选分类</li>
+        <li
+          v-for="item in elect.list"
+          :key="item.PictureId"
+          :class="{'list':elect.bool===item.PictureId}"
+          @click="add(item)"
+        >{{item.Name}}</li>
       </ul>
       <div class="right">
-        <component :is="t"></component>
+        <component :is="elect.one"></component>
       </div>
     </div>
 
     <Footer/>
   </div>
 </template>
-<script> 
+<script>
 import Footer from "@/common/TabBar";
- import One from "../elect_1";
- import Twene from "../elect_2";
- import {mapState}  from 'vuex'
+import One from "../elect_1";
+import Two from "../elect_2";
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   components: {
     Footer
   },
-  computed:{
-  
-  },
-  data() {
-    return {
-      list: [],
-      bool: "",
-      bools:true,
-      t: Twene
-    };
-  },
-  
-  created() {
-    fetch("https://api1.34580.com/sz/Products/BigCategoryRequest").then((res)=>
-        {
-          return res.json()
-        }).then((res)=>{
-        this.list=res.Data
-        })
-  
+  computed: {
+    ...mapState(["elect", "list", "bools", "bool", "one"])
   },
 
+  created() {
+    console.log(this.elect.list);
+    this.getData();
+  },
 
   methods: {
-    borderLeft( item) {
-      this.bool = item.PictureId;
-      this.bools=false;
-    },
-    first(){
-      this.bools=true;
-      this.bool=0
+    ...mapActions(["getData", "getDates"]),
+    ...mapMutations(["first", "borderLeft"]),
+    add(item) {
+      this.borderLeft(item);
+      this.getDates(item.Id);
     }
   },
-
   components: {
-    One
+    One,
+    Two
   }
 };
 </script>
 <style lang="scss" scoped>
 $t: 50;
-.fenlei{
+.fenlei {
   width: 100%;
   height: 100%;
   overflow-y: hidden;
@@ -98,22 +87,22 @@ $t: 50;
 }
 .contents {
   display: flex;
-.left {
-  width: 90 / $t + rem;
-  height: 618.33 / $t + rem;
-  overflow: auto;
-  border-right: 0.02rem solid #ddd;
-  li {
-    width: 99 / $t + rem;
-    height: 46 / $t + rem;
-    background: #f2f2f2;
-    margin: 0;
-    border-bottom: 0.02rem solid #ddd;
-    line-height: 46 / $t + rem;
-    text-align: center;
-    font-size: 32px;
+  .left {
+    width: 90 / $t + rem;
+    height: 618.33 / $t + rem;
+    overflow: auto;
+    border-right: 0.02rem solid #ddd;
+    li {
+      width: 99 / $t + rem;
+      height: 46 / $t + rem;
+      background: #f2f2f2;
+      margin: 0;
+      border-bottom: 0.02rem solid #ddd;
+      line-height: 46 / $t + rem;
+      text-align: center;
+      font-size: 32px;
+    }
   }
-}
 }
 .list {
   background: white !important;
@@ -121,7 +110,5 @@ $t: 50;
 }
 .right {
   flex: 1;
-  
 }
-//https://api1.34580.com/sz/Products/SubCategoryRequest
 </style>

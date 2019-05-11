@@ -98,7 +98,8 @@ export default {
     #aa{
         width: 100%;
         height: 100%;
-        background: #f4f3f3
+        background: #f4f3f3;
+        margin-top:0;
     }
     .top{
         width: 7rem;

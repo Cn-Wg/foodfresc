@@ -121,17 +121,18 @@
             </li>
             <li>
               <i class="fa fa-shopping-cart"></i>
-              <span>购物车</span>
+              <a href="/home/shopcar">购物车</a>
             </li>
-            <a href="/home/shopcar">
+            <button @click="listAdd(goods.periodMoney)" >
                 加入购物车
-            </a>
+            </button>
         </ul>
     </div>
   </div>
 </template>
 
 <script>
+import Vuex from 'vuex'
 import { Swipe, SwipeItem } from "mint-ui";
 export default {
   data() {
@@ -155,7 +156,9 @@ export default {
           this.goods = res.result.productInfo
           console.log(this.goods)
         });
-    }
+    },
+      ...Vuex.mapMutations(["listAdd"])
+
   },
   created() {
     var id = this.$route.params.type;
@@ -483,11 +486,14 @@ header > .active {
        align-items: center;
        font-size: .275rem;
        color: #999;
+       a{
+            color: #999;
+       }
        i{
          font-size: .4rem;
        }
      }
-     a{
+     button{
         width: 2.28rem;
         height: .8rem;
         background:linear-gradient(90deg,#ff705b,#ff3f57);
@@ -496,6 +502,7 @@ header > .active {
         text-align: center;
         font-size: .3rem;
         line-height: .8rem;
+        border: 1px solid #c33;
      }
   }
 }

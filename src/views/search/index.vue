@@ -1,7 +1,7 @@
 <template>
     <div class="t">
         <div class="head">
-            <input type="text" class="inp" placeholder="送给妈妈的礼物"> <button class="bnt">搜索</button>
+            <input type="text" class="inp" placeholder="送给妈妈的礼物"> <a href="/home/index" class="bnt">搜索</a>
         </div>
     <h2 class="title_1">热搜</h2>
     <ul class="zu">
@@ -52,7 +52,10 @@ $t: 50;
         height: 32/$t+rem;
         background: #4cd964;
         border-radius:8/$t+rem; 
-        font-size: 30px
+        font-size: 30px;
+        text-align: center;
+        line-height: 32/$t+rem;
+        color:#fff;
     }
 }
 .title_1{

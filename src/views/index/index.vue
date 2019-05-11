@@ -167,12 +167,13 @@ export default {
     })
 
     //猜你喜欢
-     fetch("https://api1.34580.com/sz/ProductRequests/ProductMultiConditionRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9&json=%7B%22CategoryIds%22:[101155],%22PageIndex%22:1,%22PageSize%22:20,%22OrderDirectionType%22:0,%22OrderFieldType%22:0,%22sourcetype%22:%229%22%7D").then((res)=>{
-      return res.json()
-    }).then((res)=>{
-      this.like= res.Data.SourceData
-      console.log(this.like)
-    })
+     fetch("https://api1.34580.com/sz/Recommends/ProductRecommendRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9&json=%7B%22PageSize%22:10,%22PageIndex%22:1,%22RecommendType%22:0%7D")
+        .then(res => {
+          return res.json();
+        })
+        .then(res => {
+          this.like = res.Data
+        });
 
     //discount
      fetch("https://api1.34580.com/sz/Home/ShortcutIconRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9").then((res)=>{

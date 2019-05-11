@@ -103,6 +103,9 @@ export default {
         },
         changeIndex(state, index) {
             state.curIndex = index;
+        },
+        listAdd(state,params){
+            console.log(params)
         }
 
     },
