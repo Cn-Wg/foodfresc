@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "food",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "mint-ui": "^2.2.13",
-    "swiper": "^4.5.0",
     "vue": "^2.6.10",
     "vue-jsonp": "^0.1.8",
     "vue-router": "^3.0.3",

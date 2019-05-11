@@ -4,6 +4,7 @@ import Goods from './goods'
 import Listshopcar from './listshopcar'
 import elect from './elect'
 import elect_1 from './elect_1'
+import list from './list'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     Goods,
     Listshopcar,
     elect_1,
-    elect
+    elect,
+    list
   }
 })

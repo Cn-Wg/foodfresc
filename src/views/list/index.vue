@@ -15,84 +15,18 @@
     </div>
 
     <div class="da">
-      <router-link tag="dl" to="/listshopcar">
+    
+      <dl v-for="item in list.arr_s" :key="item.PictureId">
         <dt>
-          <img src="http://picpro-sz.34580.com/sz/ImageUrl/148139/500.jpeg" alt>
+          <img :src="item.PictureId | toPath" alt>
         </dt>
         <dd>
-          <p class="po">好得睐京酱鸡柳250g/袋好得睐京酱鸡柳250g/袋</p>
-          <span>250g/袋</span>
+          <p class="po">{{item.ProductName}}</p>
+          <span>{{item.PvStandard}}</span>
           <div class="aaw">
             <div class="ff">
               <span>￥</span>
-              <p>45.90</p>
-            </div>
-            <i class="fa fa-superpowers" aria-hidden="true"></i>
-          </div>
-        </dd>
-      </router-link>
-
-      <dl>
-        <dt>
-          <img src="http://picpro-sz.34580.com/sz/ImageUrl/148139/500.jpeg" alt>
-        </dt>
-        <dd>
-          <p class="po">好得睐京酱鸡柳250g/袋好得睐京酱鸡柳250g/袋</p>
-          <span>250g/袋</span>
-          <div class="aaw">
-            <div class="ff">
-              <span>￥</span>
-              <p>45.90</p>
-            </div>
-            <i class="fa fa-superpowers" aria-hidden="true"></i>
-          </div>
-        </dd>
-      </dl>
-
-      <dl>
-        <dt>
-          <img src="http://picpro-sz.34580.com/sz/ImageUrl/148139/500.jpeg" alt>
-        </dt>
-        <dd>
-          <p class="po">好得睐京酱鸡柳250g/袋好得睐京酱鸡柳250g/袋</p>
-          <span>250g/袋</span>
-          <div class="aaw">
-            <div class="ff">
-              <span>￥</span>
-              <p>45.90</p>
-            </div>
-            <i class="fa fa-superpowers" aria-hidden="true"></i>
-          </div>
-        </dd>
-      </dl>
-
-      <dl>
-        <dt>
-          <img src="http://picpro-sz.34580.com/sz/ImageUrl/148139/500.jpeg" alt>
-        </dt>
-        <dd>
-          <p class="po">好得睐京酱鸡柳250g/袋好得睐京酱鸡柳250g/袋</p>
-          <span>250g/袋</span>
-          <div class="aaw">
-            <div class="ff">
-              <span>￥</span>
-              <p>45.90</p>
-            </div>
-            <i class="fa fa-superpowers" aria-hidden="true"></i>
-          </div>
-        </dd>
-      </dl>
-      <dl>
-        <dt>
-          <img src="http://picpro-sz.34580.com/sz/ImageUrl/148139/500.jpeg" alt>
-        </dt>
-        <dd>
-          <p class="po">好得睐京酱鸡柳250g/袋好得睐京酱鸡柳250g/袋</p>
-          <span>250g/袋</span>
-          <div class="aaw">
-            <div class="ff">
-              <span>￥</span>
-              <p>45.90</p>
+              <p>{{item.PictureId}}</p>
             </div>
             <i class="fa fa-superpowers" aria-hidden="true"></i>
           </div>
@@ -111,8 +45,20 @@
 </template>
 
 <script>
+import {mapState,mapMutations,mapActions} from 'vuex'
 export default {
-
+ computed:{
+  ...mapState(["list","arr_s"])
+ },
+ 
+ created(){
+  var id = this.$route.params.type
+   this.getLink(id)
+   
+ },
+ methods:{
+...mapActions(["getLink"])
+ }
 };
 </script>
 
