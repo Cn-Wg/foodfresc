@@ -7,16 +7,22 @@
 
     <div class="al">
       <ul>
-        <li>默认</li>
-        <li>最新</li>
-        <li>销量</li>
-        <li>价格</li>
+        <li
+          v-for="(item,index) in arr"
+          :key="index"
+          :class="[indexcur === index ? 'active' : '']"
+          @click="Tab(index)"
+        >{{item}}</li>
       </ul>
     </div>
 
     <div class="da">
-    
-      <dl v-for="item in list.arr_s" :key="item.PictureId">
+      <routerLink
+        tag="dl"
+        :to="'/listshopcar/'+item.ProductId"
+        v-for="item in List.arr_s"
+        :key="item.PictureId"
+      >
         <dt>
           <img :src="item.PictureId | toPath" alt>
         </dt>
@@ -31,43 +37,50 @@
             <i class="fa fa-superpowers" aria-hidden="true"></i>
           </div>
         </dd>
-      </dl>
+      </routerLink>
     </div>
 
     <div class="fffs">
       <span>点击加载更多</span>
     </div>
-
-    <a class="aqa">
-      <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-    </a>
   </div>
 </template>
 
 <script>
-import {mapState,mapMutations,mapActions} from 'vuex'
+import { mapState, mapMutations, mapActions } from "vuex";
 export default {
- computed:{
-  ...mapState(["list","arr_s"])
- },
- 
- created(){
-  var id = this.$route.params.type
-   this.getLink(id)
-   
- },
- methods:{
-...mapActions(["getLink"])
- }
+  data() {
+    return {
+      indexcur: 0,
+      arr: ["默认", "最新", "销量", "价格"]
+    };
+  },
+  computed: {
+    ...mapState(["List", "arr_s"])
+  },
+
+  created() {
+    var id = this.$route.params.type;
+    this.getLink(id);
+  },
+  methods: {
+    ...mapActions(["getLink"]),
+    Tab(index){
+      this.indexcur = index
+    }
+  }
 };
 </script>
 
 <style lang="scss" scope>
+.active {
+  color: green;
+  border-bottom: 5px solid green;
+}
 #aa {
   width: 100%;
   height: 100%;
   background: #f4f3f3;
-  margin-bottom: 1.5rem;
   margin-top: 2rem;
   flex: 1;
   overflow: auto;
@@ -117,9 +130,7 @@ export default {
   line-height: 1rem;
   text-align: center;
 }
-#aa > .al > ul > li:nth-child(1) {
-  border-bottom: 5px solid green;
-}
+
 .da {
   width: 100%;
   min-height: 18rem;
@@ -161,6 +172,7 @@ export default {
 #aa > .fffs {
   width: 100%;
   height: 0.8rem;
+  margin-top: 0.2rem;
 }
 #aa > .fffs > span {
   width: 6rem;

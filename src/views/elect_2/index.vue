@@ -15,7 +15,7 @@
       </h2>
       <li class="list" v-for="items in item.SmallCategories" :key="items.Id">
         
-         <router-link :to="'/list/'+items.Id">
+         <router-link tag="li" :to="'/list/'+items.Id">
         
         <img :src="items.PictureId|toPath" alt>
 
@@ -40,6 +40,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 $t: 50;
 .video-right {
   width: 100%;
@@ -95,6 +96,7 @@ $t: 50;
         font-size: 28px;
         line-height: 20 / $t + rem;
         text-align: center;
+        color:#000;
       }
     }
   }

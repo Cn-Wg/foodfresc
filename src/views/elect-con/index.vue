@@ -61,6 +61,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 $t: 50;
+
 .fenlei {
   width: 100%;
   height: 100%;

@@ -70,6 +70,7 @@ $t: 50;
       font-size: 28px;
       line-height: 20 / $t + rem;
       text-align: center;
+      color:#000;
     }
   }
 }
