@@ -16,13 +16,16 @@
       </div>
 
       <div class="main">
-      <div class="swiper">
-            <div class="pic">
-               <img src="http://pic2.34580.cn/group1/M00/AB/51/wKgNY1zQI1WANmaWAAEnKR2M3KA042.gif" alt="">
-            </div>
-      </div>
+          <div class="swiper">
+                <mt-swipe :auto="4000">
+                    <mt-swipe-item v-for="(item,index) in swiper" :key="index" class="pic">
+                        <img :src="item.PicUrl " alt="">
+                    </mt-swipe-item>
+                </mt-swipe>
+          </div>
+      
 
-      <div class="tip">
+      <div class="tip"> 
             <ul>
                 <li v-for="(item,index) in tip" :key="index">
                     <div class="pic">
@@ -35,7 +38,7 @@
 
       <div class="discount">
         <div class="pic">
-            <img src="http://pic2.34580.cn/group1/M00/96/8E/wKgNYlzQfC2ALVv8AAMZ7VHJ9_0410.gif" alt="">
+            <a href="https://wechatx.34580.com/topics/5ac6a535620b84126391beef2b66d91b"><img src="http://pic2.34580.cn/group1/M00/96/8E/wKgNYlzQfC2ALVv8AAMZ7VHJ9_0410.gif" alt=""></a>
         </div>    
       </div>
 
@@ -92,12 +95,12 @@
 
       <div class="special">
           <div class="pic">
-              <span class="z1"><img src="http://pic2.34580.cn/group1/M00/96/83/wKgNYlzQbjiARurEAABtgKG6AZ435.jpeg" alt=""></span>
-              <span class="z1"><img src="http://pic2.34580.cn/group1/M00/AB/83/wKgNY1zQ6eSAdUhRAAFQJr7FkUc97.jpeg" alt=""></span>
-              <span class="z2"><img src="http://pic2.34580.cn/group1/M00/AC/7C/wKgNY1zTd5-Acj45AAEO1xgm_js69.jpeg" alt=""></span>
-              <span class="z2"><img src="http://pic2.34580.cn/group1/M00/AC/7E/wKgNY1zTe4KAFBdRAAC2_zhZvvs90.jpeg" alt=""></span>
-              <span class="z2"><img src="http://pic2.34580.cn/group1/M00/97/CB/wKgNYlzT6zyACUUkAACN8p4hz2E77.jpeg" alt=""></span>
-              <span class="z3"><img src="http://pic2.34580.cn/group1/M00/AC/6C/wKgNY1zS_z6AcvDRAAD3UnAbAEI17.jpeg" alt=""></span>
+              <a href="https://wechatx.34580.com/topics/5ac6a535620b84126391beef2b66d91b" class="z1"><img src="http://pic2.34580.cn/group1/M00/98/4E/wKgNYlzVKHaAbZihAAI1srussxA230.png" alt=""></a >
+              <a href="https://wechat-1.34580.com/event3/tuan?siteid=1&groupOnId=230" class="z1"><img src="http://pic2.34580.cn/group1/M00/98/5B/wKgNYlzVQe6AIdapAACzUgaQqPM17.jpeg" alt=""></a >
+              <a href="https://wechatx.34580.com/topics/cb9f40f05a5b40515d575d5965ca5a68" class="z2"><img src="http://pic2.34580.cn/group1/M00/98/ED/wKgNYlzWktGAGxbWAAEBVfZdRFU79.jpeg" alt=""></a >
+              <a href="https://wechatx.34580.com/topics/62f6e02ff514401e1782a4f8ae9377d0" class="z2"><img src="http://pic2.34580.cn/group1/M00/AD/0D/wKgNY1zU0X6AH9vrAAD0gFZrsaY97.jpeg" alt=""></a >
+              <a href="https://wechatx.34580.com/topics/93c50500e438724ee942c10420e21d57" class="z2"><img src="http://pic2.34580.cn/group1/M00/AD/0D/wKgNY1zU0ZOAGW6SAADQHoJP0b493.jpeg" alt=""></a >
+              <a href="https://wechatx.34580.com/topics/7e37462d505cb91dde3b0f2fef63cd83" class="z3"><img src="http://pic2.34580.cn/group1/M00/98/D0/wKgNYlzV-8yAG7ikAADZctQ6hHg22.jpeg" alt=""></a >
           </div>
       </div> 
 
@@ -129,6 +132,7 @@
 </template>
 
 <script>
+import { Swipe, SwipeItem } from 'mint-ui';
 export default {
   data(){
     return{
@@ -154,10 +158,18 @@ export default {
       ],
       area:[],
       ltime:[],
-      like:[]
+      like:[],
+      swiper:[]
     }
   },
   created() {
+    //轮播图
+    fetch("https://api1.34580.com/sz/Home/AdvertisementPhotoshootRequest?accesstoken=3b44a0d31a2b5616&customerguid=596bc88c-6bc8-440f-ad12-ee0788986466&sourcetype=9&json=%7B%22TypeCode%22:1011,%22PlatForm%22:1500%7D").then((res)=>{
+      return res.json()
+    }).then((res)=>{
+      this.swiper= res.Data
+      console.log(this.swiper)
+    })
 
     //限时抢购
     fetch("https://api1.34580.com/sz/Home/FlashSaleRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9").then((res)=>{
@@ -169,7 +181,7 @@ export default {
     //猜你喜欢
      fetch("https://api1.34580.com/sz/Recommends/ProductRecommendRequest?accesstoken=384eb6e0fd6dff1a&customerguid=5fc281aa-f73a-4fc9-b652-1ac1495bbe18&sourcetype=9&json=%7B%22PageSize%22:10,%22PageIndex%22:1,%22RecommendType%22:0%7D")
         .then(res => {
-          return res.json();
+          return res.json()
         })
         .then(res => {
           this.like = res.Data
@@ -233,13 +245,11 @@ export default {
     .swiper{
           width: 100%;
           height: 3.21rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           background: #fff;
+          padding: .1rem .2rem;
           .pic{
               width: 7.11rem;
-              height: 2.32rem;
+              height: 3.32rem;
               img{
                   width: 100%;
                   height: 100%;
@@ -419,7 +429,7 @@ export default {
         .pic{
           width: 100%;
           height: 12rem;
-            span{
+            a{
               display: block;
               float: left;
             }
