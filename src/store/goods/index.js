@@ -103,9 +103,12 @@ export default {
         },
         changeIndex(state, index) {
             state.curIndex = index;
+<<<<<<< HEAD
         },
         listAdd(state,params){
             console.log(params)
+=======
+>>>>>>> 83157a50731a467dfbfcce070c3a190ba9186f9f
         }
 
     },
