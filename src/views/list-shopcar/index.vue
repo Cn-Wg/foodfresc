@@ -123,7 +123,7 @@
               <i class="fa fa-shopping-cart"></i>
               <a href="/home/shopcar">购物车</a>
             </li>
-            <button @click="listAdd(goods.periodMoney)" >
+            <button @click="listAdd(goods.productId)" >
                 加入购物车
             </button>
         </ul>
@@ -157,7 +157,7 @@ export default {
           console.log(this.goods)
         });
     },
-      ...Vuex.mapMutations(["listAdd"])
+      ...Vuex.mapActions(["listAdd"])
 
   },
   created() {

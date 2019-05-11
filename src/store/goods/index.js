@@ -1,37 +1,14 @@
 export default {
     state: {
-        todo: [
-
-            {
-                id: 1,
-                title: 'http://picpro-sz.34580.com/sz/ImageUrl/147886/120.jpeg',
-                name: "【两杯装】八喜香草口味冰淇淋283g/杯【两杯装】八喜香草口味冰淇淋283g",
-                pee: "283g*2杯/组",
-                price: "45.0",
-                sum: 1,
-
-                complete: true,
-            },
-            {
-                id: 2,
-                title: 'http://picpro-sz.34580.com/sz/ImageUrl/147886/120.jpeg',
-                name: "【两杯装】八喜香草口味冰淇淋283g/杯【两杯装】八喜香草口味冰淇淋283g",
-                pee: "283g*2杯/组",
-                price: "45.0",
-                sum: 1,
-
-                complete: true,
-            },
-        ],
-        curIndex: 2,
+        todo:localStorage.cartInfo ? JSON.parse(localStorage.cartInfo) : [],
         allComplete: true
     },
-    getters: {  //显示总的钱 显示总的数量
+    getters: { //显示总的钱 显示总的数量
         money(state) {
             var money = 0;
             state.todo.forEach((item) => {
-                if (item.complete) {
-                    money += item.price * item.sum;
+                if (item.published) {
+                    money += item.salesQuantityStart * (item.unitPeriodMoney*10)/10 ;
                 }
             })
             return money;
@@ -39,8 +16,8 @@ export default {
         sum(state) {
             var sum = 0;
             state.todo.forEach((item) => {
-                if (item.complete) {
-                    sum += item.sum;
+                if (item.published) {
+                    sum += item.salesQuantityStart;
                 }
             })
             return sum;
@@ -48,9 +25,8 @@ export default {
         },
         arr(state) {
             var arr = true
-            console.log(item.complete)
             state.todo.filter((item) => {
-                if (!item.complete) {
+                if (!item.published) {
                     arr = false;
                 } else {
                     arr = true
@@ -61,56 +37,49 @@ export default {
 
     },
     mutations: {
-        add(state, obj) {  //把商品添加到购物车
-            //第一次是添加，第二次是数量加1
-            if (state.todo.length === 0) {
-                state.todo.push(obj);
-                return;
-            }
-            var flag = false; //false 表示加入的商品在购物车中不存在
-            state.todo.forEach((item) => {
-                if (item.id === obj.id) {  //加入的商品在购物车中存在
-                    item.sum++
-                    flag = true;
-                }
-            })
-            if (!flag) {
-                state.todo.push(obj);
-            }
+        listAdd(state, obj) {
+            console.log(obj)
+            // if (state.todo.length === 0) {
+                localStorage.cartInfo = JSON.stringify(state.todo)
+            //     return;
+            // }
+            // var flag = false; //false 表示加入的商品在购物车中不存在
+            // state.todo.forEach((item) => {
+            //     if (item.pictureId === obj.pictureId) { //加入的商品在购物车中存在
+            //         item.salesQuantityStart++
+            //         flag = true;
+            //     }
+            // })
+            // if (!flag) {
+            //     localStorage.cartInfo = JSON.stringify(state.todo)
+            // }
+            console.log(state.todo)
         },
+
         remove(state, id) {
-            console.log(111)
-            state.todo = state.todo.filter((item) => item.id !== id)
+            state.todo.splice(id,1)
         },
         statechange(state, value) {
             state.todo.map(item => {
-                item.complete = value
+                item.published = value
             })
         },
         change(state, obj) {
+     
             state.todo.forEach((item) => {
-                if (item.id === obj.id) {
+                if (item.pictureId === obj.id) {
+                    
                     if (obj.flag) {
-                        item.sum++
-                    }          //flag 是true +1  false -1
+                        item.salesQuantityStart++
+                    } //flag 是true +1  false -1
                     else {
-                        if (item.sum > 0) {
-                            item.sum--
+                        if (item.salesQuantityStart > 0) {
+                            item.salesQuantityStart--
                         }
                     }
                 }
             })
         },
-        changeIndex(state, index) {
-            state.curIndex = index;
-<<<<<<< HEAD
-        },
-        listAdd(state,params){
-            console.log(params)
-=======
->>>>>>> 83157a50731a467dfbfcce070c3a190ba9186f9f
-        }
-
     },
     actions: {
 

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Goods from './goods'
-import Listshopcar from './listshopcar'
-import elect from './elect'
-import elect_1 from './elect_1'
+import goods from './goods/index.js'
+import Listshopcar from './listshopcar/index.js'
+import elect from './elect/index.js'
+import elect_1 from './elect_1/index.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,7 +17,7 @@ export default new Vuex.Store({
 
   },
   modules:{
-    Goods,
+    goods,
     Listshopcar,
     elect_1,
     elect

@@ -1,4 +1,4 @@
-# myapp
+# food
 
 ## Project setup
 ```
