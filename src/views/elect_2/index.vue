@@ -8,16 +8,21 @@
       </mt-swipe>
     </div>
 
-    <div class="list_cont" v-for="item in elect.cook" :key="item.Id">
+    <div class="list_cont" v-for="item in elect.cook" :key="item.SmallCategories.Id">
       <h2>
         {{item.MetaKeywords}}
-        <span>全部</span>
+        <span>全部<i class="fa fa-caret-right" aria-hidden="true"></i></span>
       </h2>
       <li class="list" v-for="items in item.SmallCategories" :key="items.Id">
+        
+         <router-link :to="'/list/'+items.Id">
+        
         <img :src="items.PictureId|toPath" alt>
 
         <p>{{items.Name}}</p>
+        </router-link>
       </li>
+      
     </div>
   </div>
 </template>
@@ -69,6 +74,10 @@ $t: 50;
         height: 26 / $t + rem;
         display: block;
         float: right;
+        color: #999;
+        i{
+          padding-left:5/$t+rem; 
+        }
       }
     }
     .list {

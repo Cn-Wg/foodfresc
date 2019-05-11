@@ -7,10 +7,12 @@
         </mt-swipe-item>
       </mt-swipe>
     </div>
-    <li class="list" v-for="item in elect_1.arr" :key="item.id">
+    <router-link   v-for="item in elect_1.arr" :key="item.Id"   :to="'/list/'+item.Id">
+    <li class="list">
       <img :src="item.PictureId | toPath" alt>
       <p>{{item.Name}}</p>
     </li>
+    </router-link>
   </div>
 </template>
 <script>
