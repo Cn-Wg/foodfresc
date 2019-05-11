@@ -1,6 +1,6 @@
 export default {
     state: {
-        todo:localStorage.cartInfo ? JSON.parse(localStorage.cartInfo) : [],
+        todo:localStorage.cartInfo?JSON.parse(localStorage.cartInfo):[],
         allComplete: true
     },
     getters: { //显示总的钱 显示总的数量
@@ -38,9 +38,12 @@ export default {
     },
     mutations: {
         listAdd(state, obj) {
-            console.log(obj)
+            var list = [];
+            list.push(obj)
+            localStorage.cartInfo=JSON.stringify(list);
+            // state.cartInfo=JSON.parse(localStorage.cartInfo);
             // if (state.todo.length === 0) {
-                localStorage.cartInfo = JSON.stringify(state.todo)
+               
             //     return;
             // }
             // var flag = false; //false 表示加入的商品在购物车中不存在
@@ -80,16 +83,6 @@ export default {
                 }
             })
         },
-<<<<<<< HEAD
-=======
-        changeIndex(state, index) {
-            state.curIndex = index;
-        },
-        listAdd(state,params){
-            console.log(params)
-        }
-
->>>>>>> zx
     },
     actions: {
 

@@ -71,7 +71,7 @@
         </div>
 
         <div class="az">
-          <div>去结算</div>
+          <a href="/login">去结算</a>
           <p>({{sum}})</p>
         </div>
       </div>
@@ -304,6 +304,9 @@ export default {
   color: white;
   line-height: 0.6rem;
   padding-left: 0.2rem;
+}
+.az > a{
+    color: white;
 }
 .select {
   display: none;
